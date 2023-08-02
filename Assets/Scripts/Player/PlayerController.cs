@@ -5,6 +5,7 @@ public class PlayerController : LocomotionController
 {
     #region [PrivateVars]
 
+    
     private float moveHorizontal;
     private float moveVertical;
 
@@ -16,6 +17,8 @@ public class PlayerController : LocomotionController
     private Rigidbody _rigidbody;
 
     #endregion
+
+    public Animator animator;
 
     private void Start()
     {
