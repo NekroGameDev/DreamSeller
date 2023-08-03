@@ -3,6 +3,12 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : LocomotionController
 {
+    #region [PublicVars]
+
+    public float GetCurrentDirection => currentDirection;
+
+    #endregion
+
     #region [PrivateVars]
 
     private float moveHorizontal;
@@ -14,6 +20,8 @@ public class PlayerController : LocomotionController
     private readonly string INPUT_VERTICAL = "Vertical";
 
     private Rigidbody _rigidbody;
+
+    private float currentDirection = 1;
 
     #endregion
 
@@ -34,8 +42,13 @@ public class PlayerController : LocomotionController
 
     private void Inputs()
     {
-        moveHorizontal = Input.GetAxis(INPUT_HORIZONTAL);
-        moveVertical = Input.GetAxis(INPUT_VERTICAL);
+        moveHorizontal = Input.GetAxisRaw(INPUT_HORIZONTAL);
+        moveVertical = Input.GetAxisRaw(INPUT_VERTICAL);
+
+        if (Mathf.Abs(moveHorizontal) > 0)
+        {
+            currentDirection = moveHorizontal;
+        }
     }
 
     protected override void Move()
