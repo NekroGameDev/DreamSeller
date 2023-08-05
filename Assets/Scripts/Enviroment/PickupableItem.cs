@@ -1,16 +1,7 @@
 using UnityEngine;
 
-public class PickupableItem : Interactable
+public class PickupableItem : Item
 {
-    private Rigidbody _rigidbody;
-    private Collider _collider;
-
-    private void Start()
-    {
-        _rigidbody = GetComponent<Rigidbody>();
-        _collider = GetComponent<Collider>();
-    }
-
     public override void Interact(InteractionController controller)
     {
         controller.Pickup(this);
