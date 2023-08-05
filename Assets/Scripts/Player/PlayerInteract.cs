@@ -1,14 +1,24 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class PlayerInteract : InteractionController
 {
+    [Header("ItemInfo")]
+    [SerializeField] private GameObject itemInfoPanel;
+    [SerializeField] private TextMeshProUGUI textItemInfo;
+    [SerializeField] private LayerMask itemLayer;
+
     [Header("Interact")]
     [SerializeField] private LayerMask interactLayer;
     [SerializeField] private float interactRange = 1;
 
     #region [PrivateVars]
 
+    private Coroutine infoCoroutine;
+
     private PlayerController playerController;
+    private CameraController cameraController;
 
     #endregion
 
@@ -17,13 +27,17 @@ public class PlayerInteract : InteractionController
         base.Start();
 
         playerController = GetComponent<PlayerController>();
+        cameraController = GetComponent<CameraController>();
     }
 
     private void Update()
     {
+        GetItemInfo();
         Interact();
         SetPickupPoint(playerController.GetCurrentDirection == 1 ? true : false);
     }
+
+    #region [Interact]
 
     protected override void Interact()
     {
@@ -31,7 +45,7 @@ public class PlayerInteract : InteractionController
         {
             if (pickupableItem == null)
             {
-                CastRay();
+                Try2Interact();
             }
             else
             {
@@ -40,7 +54,7 @@ public class PlayerInteract : InteractionController
         }
     }
 
-    private void CastRay()
+    private void Try2Interact()
     {
         Ray ray = new Ray(transform.position, transform.right * playerController.GetCurrentDirection);
         RaycastHit hit;    
@@ -53,4 +67,49 @@ public class PlayerInteract : InteractionController
             }
         }
     }
+
+    #endregion
+
+    #region [ItemInfo]
+
+    private void GetItemInfo()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = cameraController.GetCurrentCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, itemLayer))
+            {
+                if (hit.transform.TryGetComponent(out ItemInfo item))
+                {
+                    if (infoCoroutine != null)
+                    {
+                        StopCoroutine(infoCoroutine);
+                    }
+
+                    infoCoroutine = StartCoroutine(ShowInfoCoroutine(item));
+                }
+            }
+        }
+    }
+
+    private IEnumerator ShowInfoCoroutine(ItemInfo item)
+    {
+        if (itemInfoPanel == null)
+        {
+            Debug.LogWarning($"Set text item info; Item info: {item.GetItemInfo}");
+            yield break;
+        }
+
+        itemInfoPanel.SetActive(true);
+        textItemInfo.text = item.GetItemInfo;
+
+        yield return new WaitForSeconds(item.GetTime2Show);
+
+        itemInfoPanel.SetActive(false);
+        textItemInfo.text = string.Empty;
+    }
+
+    #endregion
 }

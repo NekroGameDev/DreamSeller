@@ -7,13 +7,25 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] private Camera sceneCamera;
 
+    #region [PublicVars]
+
+    public Camera GetCurrentCamera => currentCamera;
+
+    #endregion
+
+    #region [PrivateVars]
+
     private Camera _camera;
+    private Camera currentCamera;
 
     private bool isCameraSwap = false;
+
+    #endregion
 
     private void Start()
     {
         _camera = Camera.main;
+        currentCamera = _camera;
 
         offset = _camera.transform.position;
     }
@@ -24,6 +36,7 @@ public class CameraController : MonoBehaviour
         {
             if (sceneCamera == null)
             {
+                Debug.LogWarning("Set scene camera");
                 return;
             }
 
@@ -31,6 +44,8 @@ public class CameraController : MonoBehaviour
 
             _camera.gameObject.SetActive(!isCameraSwap);
             sceneCamera.gameObject.SetActive(isCameraSwap);
+
+            currentCamera = isCameraSwap ? sceneCamera : _camera;
         }
     }
 
