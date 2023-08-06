@@ -32,7 +32,7 @@ public class PipeController : MonoBehaviour, IPointerClickHandler
                 isPlaced = true;
                 PipesManager.Instance.CorrectMove();
             }
-            else
+            else if (isPlaced)
             {
                 isPlaced = false;
                 PipesManager.Instance.WrongMove();

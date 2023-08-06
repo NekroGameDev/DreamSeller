@@ -66,4 +66,9 @@ public class PlayerController : LocomotionController
 
         _rigidbody.MovePosition(_rigidbody.position + move * speed * Time.fixedDeltaTime);
     }
+
+    public void StopMove()
+    {
+        playerAnimations.SetMove(0, (int)moveHorizontal, (int)moveVertical);
+    }
 }

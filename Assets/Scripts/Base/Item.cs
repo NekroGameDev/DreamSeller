@@ -9,7 +9,7 @@ public class Item : Interactable
 
     #endregion
 
-    private void Start()
+    protected virtual void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _collider = GetComponent<Collider2D>();

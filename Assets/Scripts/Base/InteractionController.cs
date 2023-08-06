@@ -3,7 +3,7 @@ using UnityEngine;
 public abstract class InteractionController : MonoBehaviour
 {
     [Header("Pickup")]
-    [SerializeField] private Transform itemPickupPoint;
+    [SerializeField] private SpriteRenderer itemPickupPoint;
     [SerializeField] private Transform itemDropPoint;
 
     #region [PrivateVars]
@@ -16,7 +16,7 @@ public abstract class InteractionController : MonoBehaviour
 
     protected virtual void Start()
     {
-        pickupPointStartPosition = itemPickupPoint.localPosition;
+        //pickupPointStartPosition = itemPickupPoint.localPosition;
     }
 
     protected abstract void Interact();
@@ -24,8 +24,7 @@ public abstract class InteractionController : MonoBehaviour
     public virtual void Pickup(PickupableItem item)
     {
         pickupableItem = item;
-        pickupableItem.transform.position = itemPickupPoint.position;
-        pickupableItem.transform.parent = itemPickupPoint.transform;
+        itemPickupPoint.sprite = pickupableItem.GetSprite;
     }
 
     protected virtual void DropItem()
@@ -36,8 +35,8 @@ public abstract class InteractionController : MonoBehaviour
         }
 
         pickupableItem.Drop();
-        pickupableItem.transform.parent = null;
         pickupableItem.transform.position = itemDropPoint.position;
         pickupableItem = null;
+        itemPickupPoint.sprite = null;
     }
 }
