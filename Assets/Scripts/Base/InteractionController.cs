@@ -4,6 +4,7 @@ public abstract class InteractionController : MonoBehaviour
 {
     [Header("Pickup")]
     [SerializeField] private Transform itemPickupPoint;
+    [SerializeField] private Transform itemDropPoint;
 
     #region [PrivateVars]
 
@@ -36,11 +37,7 @@ public abstract class InteractionController : MonoBehaviour
 
         pickupableItem.Drop();
         pickupableItem.transform.parent = null;
+        pickupableItem.transform.position = itemDropPoint.position;
         pickupableItem = null;
-    }
-
-    protected void SetPickupPoint(bool isRight)
-    {
-        itemPickupPoint.transform.localPosition = isRight ? pickupPointStartPosition : pickupPointStartPosition * -1f;
     }
 }

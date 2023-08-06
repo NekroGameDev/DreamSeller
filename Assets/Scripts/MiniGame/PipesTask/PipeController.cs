@@ -1,6 +1,7 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class PipeController : MonoBehaviour
+public class PipeController : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private float[] correctRotations;//Максимум 2
 
@@ -19,12 +20,6 @@ public class PipeController : MonoBehaviour
         int randomValue = Random.Range(0, avaiableRotations.Length);
         transform.eulerAngles = new Vector3(0, 0, avaiableRotations[randomValue]);
 
-        CheckCorrectRotation();
-    }
-
-    private void OnMouseDown()
-    {
-        transform.Rotate(new Vector3(0, 0, 90));
         CheckCorrectRotation();
     }
 
@@ -56,5 +51,11 @@ public class PipeController : MonoBehaviour
                 PipesManager.Instance.WrongMove();
             }
         }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        transform.Rotate(new Vector3(0, 0, 90));
+        CheckCorrectRotation();
     }
 }

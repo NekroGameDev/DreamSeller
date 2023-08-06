@@ -27,7 +27,7 @@ public class CameraController : MonoBehaviour
         _camera = Camera.main;
         currentCamera = _camera;
 
-        offset = _camera.transform.position;
+        offset.z = _camera.transform.position.z;
     }
 
     private void Update()

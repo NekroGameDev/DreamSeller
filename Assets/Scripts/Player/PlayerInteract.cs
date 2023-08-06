@@ -34,7 +34,6 @@ public class PlayerInteract : InteractionController
     {
         GetItemInfo();
         Interact();
-        SetPickupPoint(playerController.GetCurrentDirection == 1 ? true : false);
     }
 
     #region [Interact]
