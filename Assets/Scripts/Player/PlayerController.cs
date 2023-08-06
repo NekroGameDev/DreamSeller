@@ -23,6 +23,7 @@ public class PlayerController : LocomotionController
 
     private Rigidbody2D _rigidbody;
     private PlayerAnimations playerAnimations;
+    private AudioSource _audio;
 
     private readonly string INPUT_HORIZONTAL = "Horizontal";
     private readonly string INPUT_VERTICAL = "Vertical";
@@ -33,6 +34,7 @@ public class PlayerController : LocomotionController
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         playerAnimations = GetComponent<PlayerAnimations>();
+        _audio = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -55,6 +57,18 @@ public class PlayerController : LocomotionController
         if (Mathf.Abs(moveHorizontal) > 0)
         {
             currentDirection = moveHorizontal;
+        }
+
+        if (state == 0)
+        {
+            _audio.Stop();
+        }
+        else
+        {
+            if (!_audio.isPlaying)
+            {
+                _audio.Play();
+            }
         }
 
         playerAnimations.SetMove(state, (int)moveHorizontal, (int)moveVertical);
