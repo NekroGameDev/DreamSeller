@@ -30,16 +30,19 @@ public class SceneLoader : MonoBehaviour
     {
         if (smoothBlackout < 0.1f) { smoothBlackout = 0.1f; }
 
-        while (loadingScreen.color.a < 1)
-        {
-            loadingScreen.color = new Color(loadingScreen.color.r, loadingScreen.color.g, loadingScreen.color.b, loadingScreen.color.a + 1 * smoothBlackout);
-            yield return null;
-        }
-
+        loadingScreen.gameObject.SetActive(true);
         AsyncOperation m_operation = SceneManager.LoadSceneAsync(m_sceneIndex);
+        //while (loadingScreen.color.a < 1)
+        //{
+        //    loadingScreen.color = new Color(loadingScreen.color.r, loadingScreen.color.g, loadingScreen.color.b, loadingScreen.color.a + 1 * smoothBlackout);
+        //    yield return null;
+        //}
+
+
 
         while (!m_operation.isDone)
         {
+            loadingScreen.color = new Color(loadingScreen.color.r, loadingScreen.color.g, loadingScreen.color.b, loadingScreen.color.a + 1 * smoothBlackout);
             float m_progress = Mathf.Clamp01(m_operation.progress / 0.9f);
             //loadingBar.value = m_progress;
 

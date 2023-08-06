@@ -11,10 +11,10 @@ public class TriggerEvents : MonoBehaviour
         {
             onTriggerEnter?.Invoke();
 
+            player.StopMove();
             player.transform.position = transform.position;
             player.transform.parent = transform;
             player.enabled = false;
-            player.StopMove();
         }
     }
 }

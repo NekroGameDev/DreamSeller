@@ -37,6 +37,7 @@ public class TriggerCollider : MonoBehaviour
             {
                 Debug.Log("Points earned: " + pointsToAdd);
                 tmp.SetActive(false);
+                Fishing.Intance.AddScore();
 
                 // Activate the next object from the array
                 if (replacementIndex < activeObjectsAfterDestruction.Length)
