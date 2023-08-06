@@ -3,9 +3,12 @@ using UnityEngine;
 public class TriggerCollider : MonoBehaviour
 {
     public int pointsToAdd = 10;
+    public GameObject[] replacementObjects; // Add the replacement objects in the Inspector
+    public GameObject[] activeObjectsAfterDestruction; // Add the active objects in the Inspector
     private GameObject tmp;
 
     private bool isInsideCollider = false;
+    private int replacementIndex = 0;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -15,6 +18,7 @@ public class TriggerCollider : MonoBehaviour
             tmp = other.gameObject;
         }
     }
+
 
     private void OnTriggerExit2D(Collider2D other)
     {
@@ -32,7 +36,14 @@ public class TriggerCollider : MonoBehaviour
             if (isInsideCollider && tmp != null)
             {
                 Debug.Log("Points earned: " + pointsToAdd);
-                Destroy(tmp);
+                tmp.SetActive(false);
+
+                // Activate the next object from the array
+                if (replacementIndex < activeObjectsAfterDestruction.Length)
+                {
+                    activeObjectsAfterDestruction[replacementIndex].SetActive(true);
+                    replacementIndex++;
+                }
             }
         }
     }
