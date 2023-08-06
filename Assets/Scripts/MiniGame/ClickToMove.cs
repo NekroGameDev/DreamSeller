@@ -1,14 +1,17 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class ClickToMove : MonoBehaviour, IPointerClickHandler
 {
-    public float moveDistance = 100.0f; 
-    public LayerMask obstacleLayer; 
+    public float moveDistance = 100.0f;
+    public LayerMask obstacleLayer;
+    public LayerMask targetLayer; // Add a new layer to check after moving
     private Vector3 originalPosition;
     private bool isMoving = false;
     private static bool canClick = true;
+    public Animator geerWell;
 
     private void Start()
     {
@@ -34,7 +37,7 @@ public class ClickToMove : MonoBehaviour, IPointerClickHandler
         isMoving = true;
         canClick = false;
 
-        Vector3 targetPosition = transform.position + Vector3.up * moveDistance; 
+        Vector3 targetPosition = transform.position + Vector3.up * moveDistance;
 
         if (!CheckObstacle(targetPosition))
         {
@@ -57,7 +60,7 @@ public class ClickToMove : MonoBehaviour, IPointerClickHandler
         }
 
         float elapsedTime = 0f;
-        float moveTime = 1.0f; 
+        float moveTime = 1.0f;
 
         Vector3 startingPosition = transform.position;
 
@@ -72,5 +75,19 @@ public class ClickToMove : MonoBehaviour, IPointerClickHandler
         isMoving = false;
 
         canClick = true;
+
+        // Additional check after moving
+        if (CheckTargetLayer(targetPosition))
+        {
+            Debug.Log("Reached the target layer!");
+            // Perform additional actions or logic here
+            geerWell.Play("1");
+        }
+    }
+
+    private bool CheckTargetLayer(Vector3 position)
+    {
+        Collider2D hitCollider = Physics2D.OverlapCircle(position, 0.1f, targetLayer);
+        return hitCollider != null;
     }
 }
