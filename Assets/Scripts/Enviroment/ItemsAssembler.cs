@@ -9,7 +9,7 @@ public class ItemsAssembler : MonoBehaviour
     [SerializeField] private UnityEvent onSuccess;
     [SerializeField] private UnityEvent onFailure;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.TryGetComponent(out Item item))
         {

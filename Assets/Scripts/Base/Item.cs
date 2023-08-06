@@ -4,14 +4,14 @@ public class Item : Interactable
 {
     #region [PrivateVars]
 
-    protected Rigidbody _rigidbody;
-    protected Collider _collider;
+    protected Rigidbody2D _rigidbody;
+    protected Collider2D _collider;
 
     #endregion
 
     private void Start()
     {
-        _rigidbody = GetComponent<Rigidbody>();
-        _collider = GetComponent<Collider>();
+        _rigidbody = GetComponent<Rigidbody2D>();
+        _collider = GetComponent<Collider2D>();
     }
 }

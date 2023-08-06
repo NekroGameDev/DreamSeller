@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : LocomotionController
 {
     #region [PublicVars]
@@ -15,13 +15,13 @@ public class PlayerController : LocomotionController
     private float moveHorizontal;
     private float moveVertical;
 
-    private Vector3 move;
+    private Vector2 move;
 
     private float currentDirection = 1;
 
     private int state;
 
-    private Rigidbody _rigidbody;
+    private Rigidbody2D _rigidbody;
     private PlayerAnimations playerAnimations;
 
     private readonly string INPUT_HORIZONTAL = "Horizontal";
@@ -31,7 +31,7 @@ public class PlayerController : LocomotionController
 
     private void Start()
     {
-        _rigidbody = GetComponent<Rigidbody>();
+        _rigidbody = GetComponent<Rigidbody2D>();
         playerAnimations = GetComponent<PlayerAnimations>();
     }
 
@@ -62,7 +62,7 @@ public class PlayerController : LocomotionController
 
     protected override void Move()
     {
-        move = Vector3.right * moveHorizontal + Vector3.forward * moveVertical;
+        move = Vector2.right * moveHorizontal + Vector2.up * moveVertical;
 
         _rigidbody.MovePosition(_rigidbody.position + move * speed * Time.fixedDeltaTime);
     }

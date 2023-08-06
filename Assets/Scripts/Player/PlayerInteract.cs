@@ -57,9 +57,9 @@ public class PlayerInteract : InteractionController
     private void Try2Interact()
     {
         Ray ray = new Ray(transform.position, transform.right * playerController.GetCurrentDirection);
-        RaycastHit hit;    
+        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, 1, interactLayer);
 
-        if (Physics.Raycast(ray, out hit, interactRange, interactLayer))
+        if (hit)
         {
             if (hit.transform.TryGetComponent(out Interactable interactable))
             {
@@ -77,9 +77,9 @@ public class PlayerInteract : InteractionController
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = cameraController.GetCurrentCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, itemLayer);
 
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, itemLayer))
+            if (hit)
             {
                 if (hit.transform.TryGetComponent(out ItemInfo item))
                 {
