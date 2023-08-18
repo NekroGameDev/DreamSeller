@@ -9521,8 +9521,8 @@ MonoBehaviour:
     \u043D\u0430\u0438\u043B\u0443\u0447\u0448\u0438\u043C\u0438 \u043F\u043E\u0436\u0435\u043B\u0430\u043D\u0438\u044F\u043C\u0438,
     \u0434\u0435\u0434\u0443\u0448\u043A\u0430 \u041F\u0438\u043A\u0442\u0443\u0440. "
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8875837ee25d11d43a68ff83772b98b6, type: 2}
-  m_sharedMaterial: {fileID: 5192244487061450232, guid: 8875837ee25d11d43a68ff83772b98b6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: df93e46e3404eca47befa14262efcb47, type: 2}
+  m_sharedMaterial: {fileID: -2585739339194476445, guid: df93e46e3404eca47befa14262efcb47, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9585,7 +9585,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &2060836756
@@ -10005,6 +10005,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 867340395}
+    - target: {fileID: 4682062337623426055, guid: 4e2485cca4881c34eb2b126e30fe6243, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: df93e46e3404eca47befa14262efcb47, type: 2}
+    - target: {fileID: 4682062337623426055, guid: 4e2485cca4881c34eb2b126e30fe6243, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e2485cca4881c34eb2b126e30fe6243, type: 3}
 --- !u!1001 &4712439148007700059
