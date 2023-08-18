@@ -120,12 +120,12 @@ TextureImporter:
       name: gears2_0
       rect:
         serializedVersion: 2
-        x: 238
-        y: 1240
-        width: 764
-        height: 782
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 1111
+        width: 1015
+        height: 1112
+      alignment: 9
+      pivot: {x: 0.60807073, y: 0.46906507}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -141,12 +141,12 @@ TextureImporter:
       name: gears2_1
       rect:
         serializedVersion: 2
-        x: 1151
-        y: 1214
-        width: 764
-        height: 789
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1069
+        y: 1112
+        width: 916
+        height: 1111
+      alignment: 9
+      pivot: {x: 0.50352204, y: 0.44772995}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -162,12 +162,12 @@ TextureImporter:
       name: gears2_2
       rect:
         serializedVersion: 2
-        x: 2043
-        y: 1234
-        width: 764
-        height: 789
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2030
+        y: 1111.5
+        width: 1015.3333
+        height: 1111.5
+      alignment: 9
+      pivot: {x: 0.39514259, y: 0.46516904}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -183,12 +183,12 @@ TextureImporter:
       name: gears2_3
       rect:
         serializedVersion: 2
-        x: 2080
-        y: 212
-        width: 764
-        height: 789
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 0.5
+        width: 1015.3333
+        height: 1111.5
+      alignment: 9
+      pivot: {x: 0.56990516, y: 0.57837003}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -204,12 +204,12 @@ TextureImporter:
       name: gears2_4
       rect:
         serializedVersion: 2
-        x: 1133
-        y: 197
-        width: 764
-        height: 789
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1015
+        y: 0.5
+        width: 1015.3333
+        height: 1111.5
+      alignment: 9
+      pivot: {x: 0.48728994, y: 0.53773373}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -225,12 +225,12 @@ TextureImporter:
       name: gears2_5
       rect:
         serializedVersion: 2
-        x: 197
-        y: 249
-        width: 764
-        height: 789
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2030
+        y: 0.5
+        width: 1015.3333
+        height: 1111.5
+      alignment: 9
+      pivot: {x: 0.42056262, y: 0.5435389}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
