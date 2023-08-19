@@ -18,7 +18,7 @@ public class CircleMovement : MonoBehaviour
     private void Update()
     {
         // Increase rotation speed over time
-        currentRotationSpeed += rotationSpeedIncreaseRate * Time.deltaTime;
+        //currentRotationSpeed += rotationSpeedIncreaseRate * Time.deltaTime;
 
         // Clamp the rotation speed to the maximum allowed speed
         currentRotationSpeed = Mathf.Clamp(currentRotationSpeed, initialRotationSpeed, maxRotationSpeed);
