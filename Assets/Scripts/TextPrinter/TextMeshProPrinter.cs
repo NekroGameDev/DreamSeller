@@ -7,24 +7,22 @@ public class TextMeshProPrinter : MonoBehaviour
     public TextMeshProUGUI targetTextMeshPro;
     public string fullText;
     public float letterDelay = 0.05f;
+    //public GameObject button;
 
     private Coroutine printingCoroutine;
 
     private void Start()
     {
-        // Start the printing coroutine when the script is initialized
         StartPrinting();
     }
 
     private void OnEnable()
     {
-        // Start the printing coroutine when the script is enabled
         StartPrinting();
     }
 
     private void OnDisable()
     {
-        // Stop the printing coroutine when the script is disabled
         StopPrinting();
     }
 
@@ -48,7 +46,7 @@ public class TextMeshProPrinter : MonoBehaviour
     private IEnumerator PrintText()
     {
         targetTextMeshPro.text = ""; // Clear the text initially
-
+        
         for (int i = 0; i < fullText.Length; i++)
         {
             targetTextMeshPro.text += fullText[i]; // Add the next letter to the text
@@ -56,5 +54,11 @@ public class TextMeshProPrinter : MonoBehaviour
         }
 
         printingCoroutine = null; // Reset the coroutine reference
+    }
+
+    public void PrintAll()
+    {
+        letterDelay = 0.0f;
+        //button.SetActive(true);
     }
 }
